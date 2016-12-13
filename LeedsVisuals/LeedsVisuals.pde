@@ -1,3 +1,12 @@
+/*
+
+
+Author:            Michael Sloan
+Submission Date:   12/18/2017
+
+*/
+
+
 
 // window size global variables
 int wlength = 768;
@@ -15,8 +24,12 @@ int titlePadding=10;
 int lmargin = 50;
 int rmargin = wwidth-lmargin*2;
 int tmargin = 100;
-int bmargin = wlength-tmargin-50;
+int bmargin = wlength-tmargin*2;
 
+// data handling global variables
+Table gvAccidentTable;
+
+// menu Handling global variables
 int selection = 1;
 
 
@@ -24,7 +37,10 @@ void setup() {
   // Set up the main page.
   size(1024,768);
   resetBase();
-
+  
+  // Load Table
+  gvAccidentTable = loadTable("2015 Accident Data.csv", "csv");
+    
   // Set up default stat title.
   setStatTitle("Press Keys 1 - 5 for a Statistic");
 
@@ -37,41 +53,41 @@ void draw() {
       case 1:
         // Set screen
         resetBase();
-        setStatTitle("Grasping Severity");
-        println (selection);
+        vizONE(); 
+        //println (selection);
         break;
       case 2:
         resetBase();
-        setStatTitle("Severity Impacts on Sex");
-        println (selection);
+        setStatTitle("Severity Impacts on Sex of the Victim");
+        //println (selection);
         break;
       case 3:
         resetBase();
         setStatTitle("Distributing Severity Locations");    
-        println (selection);
+        //println (selection);
         break;
       case 4:
         resetBase();
         setStatTitle("Accident Rates Increase As the Year Progresses");    
-        println (selection);
+        //println (selection);
         break;
       case 5:
         resetBase();
         setStatTitle("Weather and Non-Superfical Accidents");
-        println (selection);
+        //println (selection);
         break;
       default:
         resetBase();
         setStatTitle("Press Keys 1 - 5 for a Statistic"); 
-        println ("No Valid Selection - " + selection);  
+        //println ("No Valid Selection - " + selection);  
     }
   } else {
-    println ("No Press");
+    ;
   }
 }
 
 void resetBase() {
-    background(#FAF590);
+  background(175,255,253);
   fill(#FFFFFA);
   noStroke();
   rect(lmargin, tmargin, rmargin, bmargin);
