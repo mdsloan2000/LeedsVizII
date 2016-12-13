@@ -54,12 +54,10 @@ void draw() {
         // Set screen
         resetBase();
         vizONE(); 
-        //println (selection);
         break;
       case 2:
         resetBase();
-        setStatTitle("Severity Impacts on Sex of the Victim");
-        //println (selection);
+        vizTWO();
         break;
       case 3:
         resetBase();
