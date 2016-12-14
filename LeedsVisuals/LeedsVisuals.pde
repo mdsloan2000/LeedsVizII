@@ -71,7 +71,7 @@ void draw() {
         break;
       case 5:
         resetBase();
-        setStatTitle("Weather and Non-Superfical Accidents");
+        vizFIVE();
         //println (selection);
         break;
       default:

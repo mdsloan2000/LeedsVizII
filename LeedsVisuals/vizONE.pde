@@ -1,4 +1,5 @@
 void vizONE() {
+  
   //Declare local variables
   int sumSlight = 0;
   float mSlight = 0;
