@@ -91,8 +91,8 @@ void vizTWO() {
   for (int i = 0 ; i <= numBigFeatures; i++) {
       stroke(126); 
       line(llmargin+(i*bigspan), ltmargin, llmargin+(i*bigspan),lbmargin);
-      stroke(200);
-      line(llmargin+(i*bigspan) - littlespan, ltmargin, llmargin+(i*bigspan) - littlespan, lbmargin);  
+      //stroke(200);
+      //line(llmargin+(i*bigspan) - littlespan, ltmargin, llmargin+(i*bigspan) - littlespan, lvcenter);  
   }
   
   // Finish the panel frame.
@@ -108,7 +108,7 @@ void vizTWO() {
   PercentFemaleBar = round(float(sumSlightFemale)/float(sumSlightMale+sumSlightFemale)*100);
   PercentMaleBar = round(float(sumSlightMale)/float(sumSlightMale+sumSlightFemale)*100);
   mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
-  println("Mapper " + mapper1);
+  //println("Mapper " + mapper1);
   fill(0,0,125);
   beginShape();
   vertex(llmargin+60, lvcenter);
@@ -139,7 +139,7 @@ void vizTWO() {
   PercentMaleBar = round(float(sumSeriousMale)/float(sumSeriousMale+sumSeriousFemale)*100);
   mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
   mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  println("Mapper " + mapper1);
+  //println("Mapper " + mapper1);
   fill(0,0,125);
   beginShape();
   vertex(llmargin+60+bigspan, lvcenter);
@@ -165,7 +165,7 @@ void vizTWO() {
   PercentMaleBar = round(float(sumFatalMale)/float(sumFatalMale+sumFatalFemale)*100);
   mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
   mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  println("Mapper " + mapper1);
+  //println("Mapper " + mapper1);
   fill(0,0,125);
   beginShape();
   vertex(llmargin+60+bigspan*2, lvcenter);

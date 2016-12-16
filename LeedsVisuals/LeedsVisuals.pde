@@ -61,8 +61,7 @@ void draw() {
         break;
       case 3:
         resetBase();
-        setStatTitle("Distributing Severity Locations");    
-        //println (selection);
+        vizTHREE();
         break;
       case 4:
         resetBase();

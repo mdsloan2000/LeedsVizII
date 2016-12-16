@@ -35,13 +35,13 @@ void vizFIVE() {
   baseSurface[4] = "Wet / Damp";
   String weatherString;
   
-  float PercentMaleBar;
-  float PercentFemaleBar;
+  // float PercentMaleBar;
+  // float PercentFemaleBar;
   int totalSlight = 0;
   int totalSerious = 0;
   int totalFatal = 0;
-  float mapper1 = 0;
-  float mapper2 = 0;
+  // float mapper1 = 0;
+  // float mapper2 = 0;
   
   // Local Screen Attributes
   int numBigFeatures = 3;
