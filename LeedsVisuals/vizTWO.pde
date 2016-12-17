@@ -95,12 +95,18 @@ void vizTWO() {
       //line(llmargin+(i*bigspan) - littlespan, ltmargin, llmargin+(i*bigspan) - littlespan, lvcenter);  
   }
   
+  // Add Labels
+  stroke(126);
+  textSize(statTitleTsize);
+  textAlign(CENTER,TOP);
+  text("Slight Injuries",llmargin+bigspan-littlespan ,lbmargin+5);
+  text("Serious Injuries",llmargin+bigspan*2-littlespan ,lbmargin+5);
+  text("Fatalities",llmargin+bigspan*3-littlespan ,lbmargin+5);
+  
   // Finish the panel frame.
   line(llmargin, ltmargin,lrmargin, ltmargin);
   line(llmargin, lvcenter,lrmargin, lvcenter);
   line(llmargin, lbmargin,lrmargin, lbmargin);
- 
-  
   setStatTitle("Sex of the Victim Relating to The Severity of Injury");
   
   //Bar Section One
@@ -109,23 +115,41 @@ void vizTWO() {
   PercentMaleBar = round(float(sumSlightMale)/float(sumSlightMale+sumSlightFemale)*100);
   mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
   //println("Mapper " + mapper1);
-  fill(0,0,125);
+  fill(#FF9A03);
   beginShape();
   vertex(llmargin+60, lvcenter);
   vertex(llmargin+60, lvcenter - mapper1);
   vertex(llmargin+(1*bigspan) - littlespan, lvcenter - mapper1);
   vertex(llmargin+(1*bigspan) - littlespan, lvcenter);
   endShape();
+ 
   
   mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  fill(0,125,0);   
+  fill(#0503FF);   
   beginShape();
   vertex(llmargin+(1*bigspan) - littlespan, lvcenter);
   vertex(llmargin+(1*bigspan) - littlespan, lvcenter - mapper2);
   vertex(llmargin+(1*bigspan) - 60, lvcenter - mapper2);
   vertex(llmargin+(1*bigspan) - 60, lvcenter);
   endShape();
+  
+  fill(0,0,0);
+  textSize(bodyTextSize);
+  textAlign(CENTER, BOTTOM);
+  text(sumSlightFemale + " Injuries", llmargin+bigspan*1-(littlespan*1.25)-4, lvcenter );
+  fill(255,255,255);
+  text(sumSlightMale + " Injuries", llmargin+bigspan*1-(.75*littlespan)+4, lvcenter );
+  
+  fill(0,0,0);  
+  textSize(bodyTextSize);
+  text((float(round(((float(sumSlightFemale)/float((sumSlightFemale+sumSlightMale)))*100)*100)))/100 + "% Females",
+    llmargin+bigspan*1-(littlespan*1.25)-4, lvcenter-mapper1-2 );
+  text((float(round(((float(sumSlightMale)/float((sumSlightFemale+sumSlightMale)))*100)*100)))/100 + "% Males",
+    llmargin+bigspan*1-(.75*littlespan)+4, lvcenter-mapper2-2 );
 
+  
+  
+   //Add Injury Count Labels
   
   //println(sumSlightMale);
   //println(sumSlightFemale);
@@ -140,7 +164,7 @@ void vizTWO() {
   mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
   mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
   //println("Mapper " + mapper1);
-  fill(0,0,125);
+  fill(#FF9A03);
   beginShape();
   vertex(llmargin+60+bigspan, lvcenter);
   vertex(llmargin+60+bigspan, lvcenter - mapper1);
@@ -149,13 +173,30 @@ void vizTWO() {
   endShape();
   
   mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  fill(0,125,0);   
+  fill(#0503FF);   
   beginShape();
   vertex(llmargin+(2*bigspan) - littlespan, lvcenter);
   vertex(llmargin+(2*bigspan) - littlespan, lvcenter - mapper2);
   vertex(llmargin+(2*bigspan) - 60, lvcenter - mapper2);
   vertex(llmargin+(2*bigspan) - 60, lvcenter);
   endShape();
+
+  //add inner lables
+  fill(0,0,0);
+  textSize(bodyTextSize);
+  textAlign(CENTER, BOTTOM);
+  text(sumSeriousFemale + " Injuries", llmargin+bigspan*2-(littlespan*1.25)-4, lvcenter );
+  fill(255,255,255);
+  text(sumSeriousMale + " Injuries", llmargin+bigspan*2-(.75*littlespan)+4, lvcenter );
+  fill(126);
+
+  fill(0,0,0);  
+  textSize(bodyTextSize);
+  text((float(round(((float(sumSeriousFemale)/float((sumSeriousFemale+sumSeriousMale)))*100)*100)))/100 + "% Females",
+    llmargin+bigspan*2-(littlespan*1.25)-4, lvcenter-mapper1-2 );
+  text((float(round(((float(sumSeriousMale)/float((sumSeriousFemale+sumSeriousMale)))*100)*100)))/100 + "% Males",
+    llmargin+bigspan*2-(.75*littlespan)+4, lvcenter-mapper2-2 );
+
 
   //println(sumSeriousMale);
   //println(sumSeriousFemale);
@@ -166,7 +207,7 @@ void vizTWO() {
   mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
   mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
   //println("Mapper " + mapper1);
-  fill(0,0,125);
+  fill(#FF9A03);
   beginShape();
   vertex(llmargin+60+bigspan*2, lvcenter);
   vertex(llmargin+60+bigspan*2, lvcenter - mapper1);
@@ -175,7 +216,7 @@ void vizTWO() {
   endShape();
   
   mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  fill(0,125,0);   
+  fill(#0503FF);   
   beginShape();
   vertex(llmargin+(3*bigspan) - littlespan, lvcenter);
   vertex(llmargin+(3*bigspan) - littlespan, lvcenter - mapper2);
@@ -183,24 +224,55 @@ void vizTWO() {
   vertex(llmargin+(3*bigspan) - 60, lvcenter);
   endShape();
   
+  textSize(bodyTextSize);
+  textAlign(CENTER, BOTTOM);
+  fill(0,0,0);
+  text(sumFatalFemale + " Injuries", llmargin+bigspan*3-(littlespan*1.25)-4, lvcenter );
+  fill(255,255,255);
+  text(sumFatalMale + " Injuries", llmargin+bigspan*3-(.75*littlespan)+4, lvcenter );
+  fill(0,0,0);
+  
+  textSize(bodyTextSize);
+  text(((float(sumFatalFemale)/float((sumFatalFemale+sumFatalMale)))*100) + "% Females",
+    llmargin+bigspan*3-(littlespan*1.25)-4, lvcenter-mapper1-2 );
+  text(((float(sumFatalMale)/float((sumFatalFemale+sumFatalMale)))*100) + "% Males",
+    llmargin+bigspan*3-(.75*littlespan)+4, lvcenter-mapper2-2 );
+  
+  
   //Bar Section Four
   totalSlight = sumSlightMale + sumSlightFemale;
   mapper1 = map(totalSlight, 0, 2326, 0, plength/2);
   fill(255,210,210);
-  rect(llmargin+60,lvcenter,bigspan-120, mapper1); 
+  rect(llmargin+60,lvcenter,bigspan-120, mapper1);
+  fill(0,0,225);
+  textSize(minorTitleTsize);
+  textAlign(CENTER, CENTER);
+  text(sumSlightMale+sumSlightFemale + " Injuries", llmargin+bigspan-littlespan, lvcenter + (lbmargin-lvcenter)/2 );
+  fill(126);
   
   //Bar Section Five
   totalSerious = sumSeriousMale + sumSeriousFemale;
   mapper1 = map(totalSerious, 0, 2326, 0, plength/2);
   fill(255,160,160);
-  rect(llmargin+bigspan+60,lvcenter,bigspan-120, mapper1); 
+  rect(llmargin+bigspan+60,lvcenter,bigspan-120, mapper1);
+  
+  fill(0,0,225);
+  textSize(minorTitleTsize);
+  textAlign(CENTER, TOP);
+  text(sumSeriousMale+sumSeriousFemale + " Injuries", llmargin+bigspan*2-littlespan, lvcenter+mapper1+5 );
+  fill(126);
   
   //Bar Section Six
   totalFatal = sumFatalMale + sumFatalFemale;
   mapper1 = map(totalFatal, 0, 2326, 0, plength/2);
   fill(255,0,0);
   rect(llmargin+bigspan*2+60,lvcenter,bigspan-120, mapper1); 
-  
+
+  fill(0,0,225);
+  textSize(minorTitleTsize);
+  textAlign(CENTER, TOP);
+  text(sumFatalMale+sumFatalFemale + " Fatalities", llmargin+bigspan*3-littlespan, lvcenter + mapper1+5 );
+  fill(126);
   
   //Debugging Junk
   /*

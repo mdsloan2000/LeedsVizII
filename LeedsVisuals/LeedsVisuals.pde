@@ -1,8 +1,12 @@
 /*
+Leeds Accident Data Visualization
 
+Leeds Visuals - An Application for Viewing Visualizatons of Leeds UK Accident Data for 2015.
 
 Author:            Michael Sloan
 Submission Date:   12/18/2017
+
+Sources:
 
 */
 
@@ -19,6 +23,8 @@ int mainTitleTsize = 22;
 String statTitle;
 int statTitleTsize = 20;
 int titlePadding=10; 
+int minorTitleTsize = 18;
+int bodyTextSize = 11;
 
 // margin size global variables
 int lmargin = 50;

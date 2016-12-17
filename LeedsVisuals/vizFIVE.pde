@@ -152,7 +152,7 @@ void vizFIVE() {
  
   setStatTitle("Road Conditions and Accidents Severity");
   
-  //Bar Section One
+  //Bar Section One - Slight Injuries
   
   for (int i = 0 ; i < 7; i++) {
     float lheight = 0;
@@ -161,46 +161,6 @@ void vizFIVE() {
       case 1:
         //println(sumSlightDrySurface);
         lheight = map(sumSlightDrySurface, 0, 1750, 0, lbmargin - ltmargin);
-        fill(100,0,0);
-        beginShape();
-        vertex(i*bigspan/7 + llmargin, lbmargin);
-        vertex(i*bigspan/7 + llmargin, lbmargin-lheight);
-        vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
-        vertex((i+1)*bigspan/7 + llmargin, lbmargin);
-        endShape();
-        break;
-      case 2:
-        lheight = map(sumSlightFloodedSurface, 0, 1750, 0, lbmargin - ltmargin);
-        fill(100,100,0);
-        beginShape();
-        vertex(i*bigspan/7 + llmargin, lbmargin);
-        vertex(i*bigspan/7 + llmargin, lbmargin-lheight);
-        vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
-        vertex((i+1)*bigspan/7 + llmargin, lbmargin);
-        endShape();
-        break;
-      case 3:
-        lheight = map(sumSlightIcySurface, 0, 1750, 0, lbmargin - ltmargin);
-        fill(100,100,100);
-        beginShape();
-        vertex(i*bigspan/7 + llmargin, lbmargin);
-        vertex(i*bigspan/7 + llmargin, lbmargin-lheight);
-        vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
-        vertex((i+1)*bigspan/7 + llmargin, lbmargin);
-        endShape();
-        break;
-      case 4:
-        lheight = map(sumSlightSnowSurface, 0, 1750, 0, lbmargin - ltmargin);
-        fill(200,100,100);
-        beginShape();
-        vertex(i*bigspan/7 + llmargin, lbmargin);
-        vertex(i*bigspan/7 + llmargin, lbmargin-lheight);
-        vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
-        vertex((i+1)*bigspan/7 + llmargin, lbmargin);
-        endShape();
-        break;
-      case 5:
-        lheight = map(sumSlightWetSurface, 0, 1750, 0, lbmargin - ltmargin);
         fill(200,200,100);
         beginShape();
         vertex(i*bigspan/7 + llmargin, lbmargin);
@@ -208,6 +168,70 @@ void vizFIVE() {
         vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin, lbmargin);
         endShape();
+        textAlign(CENTER,BOTTOM);
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSlightDrySurface)/float(sumSlightDrySurface+sumSlightFloodedSurface+sumSlightIcySurface
+          +sumSlightSnowSurface+sumSlightWetSurface))))/10 +"%",(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
+        break;
+      case 2:
+        lheight = map(sumSlightFloodedSurface, 0, 1750, 0, lbmargin - ltmargin);
+        fill(#1602D1);
+        beginShape();
+        vertex(i*bigspan/7 + llmargin, lbmargin);
+        vertex(i*bigspan/7 + llmargin, lbmargin-lheight);
+        vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
+        vertex((i+1)*bigspan/7 + llmargin, lbmargin);
+        endShape();
+        textAlign(CENTER,BOTTOM);
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSlightFloodedSurface)/float(sumSlightDrySurface+sumSlightFloodedSurface+sumSlightIcySurface
+          +sumSlightSnowSurface+sumSlightWetSurface))))/10 +"%",(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
+        break;
+      case 3:
+        lheight = map(sumSlightIcySurface, 0, 1750, 0, lbmargin - ltmargin);
+        fill(#57DED6);
+        beginShape();
+        vertex(i*bigspan/7 + llmargin, lbmargin);
+        vertex(i*bigspan/7 + llmargin, lbmargin-lheight);
+        vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
+        vertex((i+1)*bigspan/7 + llmargin, lbmargin);
+        endShape();
+        textAlign(CENTER,BOTTOM);
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSlightIcySurface)/float(sumSlightDrySurface+sumSlightFloodedSurface+sumSlightIcySurface
+          +sumSlightSnowSurface+sumSlightWetSurface))))/10 +"%",(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
+        break;
+      case 4:
+        lheight = map(sumSlightSnowSurface, 0, 1750, 0, lbmargin - ltmargin);
+        fill(#FBFF1F);
+        beginShape();
+        vertex(i*bigspan/7 + llmargin, lbmargin);
+        vertex(i*bigspan/7 + llmargin, lbmargin-lheight);
+        vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
+        vertex((i+1)*bigspan/7 + llmargin, lbmargin);
+        endShape();
+        textAlign(CENTER,BOTTOM);
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSlightSnowSurface)/float(sumSlightDrySurface+sumSlightFloodedSurface+sumSlightIcySurface
+          +sumSlightSnowSurface+sumSlightWetSurface))))/10 +"%",(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
+        break;
+      case 5:
+        lheight = map(sumSlightWetSurface, 0, 1750, 0, lbmargin - ltmargin);
+        fill(#74AAFF);
+        beginShape();
+        vertex(i*bigspan/7 + llmargin, lbmargin);
+        vertex(i*bigspan/7 + llmargin, lbmargin-lheight);
+        vertex((i+1)*bigspan/7 + llmargin, lbmargin-lheight);
+        vertex((i+1)*bigspan/7 + llmargin, lbmargin);
+        endShape();        textAlign(CENTER,BOTTOM);
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSlightWetSurface)/float(sumSlightDrySurface+sumSlightFloodedSurface+sumSlightIcySurface
+          +sumSlightSnowSurface+sumSlightWetSurface))))/10 +"%",(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       default:
         break;
@@ -221,53 +245,73 @@ void vizFIVE() {
       case 1:
         //println(sumSeriousDrySurface);
         lheight = map(sumSeriousDrySurface, 0, 500, 0, lbmargin - ltmargin);
-        fill(100,0,0);
+        fill(200,200,100);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin);
         vertex(i*bigspan/7 + llmargin+ bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSeriousDrySurface)/float(sumSeriousDrySurface+sumSeriousFloodedSurface+sumSeriousIcySurface
+          +sumSeriousSnowSurface+sumSeriousWetSurface))))/10 +"%",bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
-      case 2:
+       case 2:
         lheight = map(sumSeriousFloodedSurface, 0, 500, 0, lbmargin - ltmargin);
-        fill(100,100,0);
+        fill(#1602D1);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin);
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSeriousFloodedSurface)/float(sumSeriousDrySurface+sumSeriousFloodedSurface+sumSeriousIcySurface
+          +sumSeriousSnowSurface+sumSeriousWetSurface))))/10 +"%",bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       case 3:
         lheight = map(sumSeriousIcySurface, 0, 500, 0, lbmargin - ltmargin);
-        fill(100,100,100);
+        fill(#57DED6);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin);
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSeriousIcySurface)/float(sumSeriousDrySurface+sumSeriousFloodedSurface+sumSeriousIcySurface
+          +sumSeriousSnowSurface+sumSeriousWetSurface))))/10 +"%",bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       case 4:
         lheight = map(sumSeriousSnowSurface, 0, 500, 0, lbmargin - ltmargin);
-        fill(200,100,100);
+        fill(#FBFF1F);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin);
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSeriousSnowSurface)/float(sumSeriousDrySurface+sumSeriousFloodedSurface+sumSeriousIcySurface
+          +sumSeriousSnowSurface+sumSeriousWetSurface))))/10 +"%",bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       case 5:
         lheight = map(sumSeriousWetSurface, 0, 500, 0, lbmargin - ltmargin);
-        fill(200,200,100);
+        fill(#74AAFF);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin);
         vertex(i*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumSeriousWetSurface)/float(sumSeriousDrySurface+sumSeriousFloodedSurface+sumSeriousIcySurface
+          +sumSeriousSnowSurface+sumSeriousWetSurface))))/10 +"%",bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       default:
         break;
@@ -281,167 +325,150 @@ void vizFIVE() {
       case 1:
         //println(sumFatalDrySurface);
         lheight = map(sumFatalDrySurface, 0, 50, 0, lbmargin - ltmargin);
-        println(sumFatalDrySurface);
-        println(lheight);
-        fill(100,0,0);
+        //println(sumFatalDrySurface);
+        //println(lheight);
+        fill(200,200,100);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin);
         vertex(i*bigspan/7 + llmargin+ bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumFatalDrySurface)/float(sumFatalDrySurface+sumFatalFloodedSurface+sumFatalIcySurface
+          +sumFatalSnowSurface+sumFatalWetSurface))))/10 +"%",2*bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       case 2:
         lheight = map(sumFatalFloodedSurface, 0, 50, 0, lbmargin - ltmargin);
-        fill(100,100,0);
+        fill(#1602D1);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin);
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumFatalFloodedSurface)/float(sumFatalDrySurface+sumFatalFloodedSurface+sumFatalIcySurface
+          +sumFatalSnowSurface+sumFatalWetSurface))))/10 +"%",2*bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       case 3:
         lheight = map(sumFatalIcySurface, 0, 50, 0, lbmargin - ltmargin);
-        fill(100,100,100);
+        fill(#57DED6);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin);
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumFatalIcySurface)/float(sumFatalDrySurface+sumFatalFloodedSurface+sumFatalIcySurface
+          +sumFatalSnowSurface+sumFatalWetSurface))))/10 +"%",2*bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       case 4:
         lheight = map(sumFatalSnowSurface, 0, 50, 0, lbmargin - ltmargin);
-        fill(200,100,100);
+        fill(#FBFF1F);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin);
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumFatalSnowSurface)/float(sumFatalDrySurface+sumFatalFloodedSurface+sumFatalIcySurface
+          +sumFatalSnowSurface+sumFatalWetSurface))))/10 +"%",2*bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       case 5:
         lheight = map(sumFatalWetSurface, 0, 50, 0, lbmargin - ltmargin);
-        fill(200,200,100);
+        fill(#74AAFF);
         beginShape();
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin);
         vertex(i*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin-lheight);
         vertex((i+1)*bigspan/7 + llmargin + bigspan*2, lbmargin);
         endShape();
+        textSize(bodyTextSize);
+        fill(0);
+        text(float(round(1000*(float(sumFatalWetSurface)/float(sumFatalDrySurface+sumFatalFloodedSurface+sumFatalIcySurface
+          +sumFatalSnowSurface+sumFatalWetSurface))))/10 +"%",2*bigspan+(bigspan/7/2)+(i*bigspan/7 + llmargin),lbmargin-lheight);
         break;
       default:
         break;
     }
   }
-  
-  /*  
-  PercentFemaleBar = round(float(sumSlightFemale)/float(sumSlightMale+sumSlightFemale)*100);
-  PercentMaleBar = round(float(sumSlightMale)/float(sumSlightMale+sumSlightFemale)*100);
-  mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
-  println("Mapper " + mapper1);
-  fill(0,0,125);
-  beginShape();
-  vertex(llmargin+60, lvcenter);
-  vertex(llmargin+60, lvcenter - mapper1);
-  vertex(llmargin+(1*bigspan) - littlespan, lvcenter - mapper1);
-  vertex(llmargin+(1*bigspan) - littlespan, lvcenter);
-  endShape();
-  
-  mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  fill(0,125,0);   
-  beginShape();
-  vertex(llmargin+(1*bigspan) - littlespan, lvcenter);
-  vertex(llmargin+(1*bigspan) - littlespan, lvcenter - mapper2);
-  vertex(llmargin+(1*bigspan) - 60, lvcenter - mapper2);
-  vertex(llmargin+(1*bigspan) - 60, lvcenter);
-  endShape();
+  // Add Labels
+  fill(0);
+  textSize(statTitleTsize);
+  textAlign(CENTER,TOP);
+  text("Slight Injuries",llmargin+bigspan-littlespan ,lbmargin+5);
+  text("Serious Injuries",llmargin+bigspan*2-littlespan ,lbmargin+5);
+  text("Fatalities",llmargin+bigspan*3-littlespan ,lbmargin+5);
+  draw5Legend();
+}
 
+void draw5Legend() {
   
-  //println(sumSlightMale);
-  //println(sumSlightFemale);
-
-  //Section One - Rect One
-  //Sect One - Rect two
+  int llmargin = lmargin+528;
+  int lrmargin = llmargin+350;
+  int ltmargin = tmargin+20;
+  int lbmargin = ltmargin+(minorTitleTsize)*2+5+75+25+5;
+  int cx = (lrmargin+llmargin)/2;
+  int lpad = 5;
   
-  
-  //Bar Section Two
-  PercentFemaleBar = round(float(sumSeriousFemale)/float(sumSeriousMale+sumSeriousFemale)*100);
-  PercentMaleBar = round(float(sumSeriousMale)/float(sumSeriousMale+sumSeriousFemale)*100);
-  mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
-  mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  println("Mapper " + mapper1);
-  fill(0,0,125);
+  fill(255,255,255);
+  stroke(0);
   beginShape();
-  vertex(llmargin+60+bigspan, lvcenter);
-  vertex(llmargin+60+bigspan, lvcenter - mapper1);
-  vertex(llmargin+(2*bigspan) - littlespan, lvcenter - mapper1);
-  vertex(llmargin+(2*bigspan) - littlespan, lvcenter);
-  endShape();
+  vertex(llmargin,ltmargin);
+  vertex(lrmargin,ltmargin);
+  vertex(lrmargin,lbmargin);
+  vertex(llmargin,lbmargin);
+  endShape(CLOSE);
   
-  mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  fill(0,125,0);   
-  beginShape();
-  vertex(llmargin+(2*bigspan) - littlespan, lvcenter);
-  vertex(llmargin+(2*bigspan) - littlespan, lvcenter - mapper2);
-  vertex(llmargin+(2*bigspan) - 60, lvcenter - mapper2);
-  vertex(llmargin+(2*bigspan) - 60, lvcenter);
-  endShape();
-
-  //println(sumSeriousMale);
-  //println(sumSeriousFemale);
-  
-  //Bar Section Three
-  PercentFemaleBar = round(float(sumFatalFemale)/float(sumFatalMale+sumFatalFemale)*100);
-  PercentMaleBar = round(float(sumFatalMale)/float(sumFatalMale+sumFatalFemale)*100);
-  mapper1 = map(PercentFemaleBar, 0, 100, 0, plength/2);
-  mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  println("Mapper " + mapper1);
-  fill(0,0,125);
-  beginShape();
-  vertex(llmargin+60+bigspan*2, lvcenter);
-  vertex(llmargin+60+bigspan*2, lvcenter - mapper1);
-  vertex(llmargin+(3*bigspan) - littlespan, lvcenter - mapper1);
-  vertex(llmargin+(3*bigspan) - littlespan, lvcenter);
-  endShape();
-  
-  mapper2 = map(PercentMaleBar, 0, 100, 0, plength/2);
-  fill(0,125,0);   
-  beginShape();
-  vertex(llmargin+(3*bigspan) - littlespan, lvcenter);
-  vertex(llmargin+(3*bigspan) - littlespan, lvcenter - mapper2);
-  vertex(llmargin+(3*bigspan) - 60, lvcenter - mapper2);
-  vertex(llmargin+(3*bigspan) - 60, lvcenter);
-  endShape();
-  
-  //Bar Section Four
-  totalSlight = sumSlightMale + sumSlightFemale;
-  mapper1 = map(totalSlight, 0, 2326, 0, plength/2);
-  fill(255,210,210);
-  rect(llmargin+60,lvcenter,bigspan-120, mapper1); 
-  
-  //Bar Section Five
-  totalSerious = sumSeriousMale + sumSeriousFemale;
-  mapper1 = map(totalSerious, 0, 2326, 0, plength/2);
-  fill(255,160,160);
-  rect(llmargin+bigspan+60,lvcenter,bigspan-120, mapper1); 
-  
-  //Bar Section Six
-  totalFatal = sumFatalMale + sumFatalFemale;
-  mapper1 = map(totalFatal, 0, 2326, 0, plength/2);
-  fill(255,0,0);
-  rect(llmargin+bigspan*2+60,lvcenter,bigspan-120, mapper1); 
+  fill(0,0,255);
+  textSize(minorTitleTsize);
+  textAlign(CENTER,TOP);
+  text("Road Surface Conditions", cx, ltmargin+lpad);
+  textAlign(LEFT,CENTER);
+  textSize(minorTitleTsize-2);
+  fill(200,200,100);
+  rect(llmargin+10, ltmargin+minorTitleTsize+lpad+15+5,15,15);
+  fill(0);
+  text("- Dry Road Conditions", llmargin+30, ltmargin+minorTitleTsize+lpad+15+5+5);
+  fill(#1602D1);
+  rect(llmargin+10, ltmargin+minorTitleTsize+lpad+30+10,15,15);
+  fill(0);
+  text("- Flooded Road Conditions", llmargin+30, ltmargin+minorTitleTsize*2+lpad+15+5+7);
+  fill(#57DED6);
+  rect(llmargin+10, ltmargin+minorTitleTsize+lpad+45+15,15,15);
+  fill(0);
+  text("- Icy Road Conditions", llmargin+30, ltmargin+minorTitleTsize*3+lpad+15+5+9);
+  fill(#FBFF1F);
+  fill(0);
+  text("- Snowy Road Conditions", llmargin+30, ltmargin+minorTitleTsize*4+lpad+15+5+11);
+  rect(llmargin+10, ltmargin+minorTitleTsize+lpad+60+20,15,15);
+  fill(#74AAFF);
+  rect(llmargin+10, ltmargin+minorTitleTsize+lpad+75+25,15,15);
+  fill(0);
+  text("- Wet Road Conditions", llmargin+30, ltmargin+minorTitleTsize*5+lpad+15+5+13);
   
   
-  //Debugging Junk
+  
   /*
-  println("Male: Slight - " + sumSlightMale + ", Serious - " + sumSeriousMale + ", Fatal - " 
-    + sumFatalMale + ", Total Male - " + totalMale + ".");
-  println("Female: Slight - " + sumSlightFemale + ", Serious - " + sumSeriousFemale + ", Fatal - " 
-    + sumFatalFemale + ", Total Female - " + totalFemale + ".");
-  println("Grand Total - " + grandTotal + ".");
-  println ("ll - " + llmargin + " ,lr - " + lrmargin); 
-  println ("lt - " + ltmargin + " ,lb - " + lbmargin);
+  textAlign(LEFT,CENTER);
+  drawMark(llmargin+15, ltmargin+lpad+bodyTextSize+7, 0, true);
+  fill(0);
+  text("Fatal Accidents",llmargin+40, ltmargin+lpad+bodyTextSize+4);
+  drawMark(llmargin+15, ltmargin+lpad+(bodyTextSize)*2+10, 1, false);
+  fill(0);
+  text("Serious Accidents",llmargin+40, ltmargin+lpad+(bodyTextSize*2)+6);
+  drawMark(llmargin+15, ltmargin+lpad+(bodyTextSize)*3+10, 2, false);
+  fill(0);
+  text("Slight Accidents",llmargin+40, ltmargin+lpad+(bodyTextSize*3)+8);
   */
+  
+  //println(llmargin + " " + cx + " " + lrmargin);
+  
 }

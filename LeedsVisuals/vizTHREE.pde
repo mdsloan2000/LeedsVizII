@@ -31,6 +31,12 @@ void vizTHREE() {
   leedsmap = loadImage("Capture.PNG");
   image(leedsmap, llmargin, ltmargin, lrmargin-llmargin, lbmargin-ltmargin);
   
+  stroke(0);
+  line(llmargin, ltmargin, lrmargin, ltmargin);
+  line(llmargin, ltmargin, llmargin, lbmargin);
+  line(llmargin, lbmargin, lrmargin, lbmargin);
+  line(lrmargin, ltmargin, lrmargin, lbmargin);
+  
   setStatTitle("Distributing Severity Locations");
   
   //Get Row and Map Point
@@ -49,23 +55,18 @@ void vizTHREE() {
           drawMark(mapX, mapY, 1, false);
         } else {
           if (severity.equals("Fatal")) {
-            println("Fatal");
+            //println("Fatal");
             drawMark(mapX, mapY, 0, true);
           }
         }
-          
-      
-      
-      //println("Sev - " + severity + ". Easting - " + easting + ". Northing - " + northing);
-  
     }
   }
   
-  
-  
-  
-  // Plotting Logic
-  // 
+  drawLegend();
+  textAlign(RIGHT, BOTTOM);
+  textSize(minorTitleTsize);
+  fill(0,0,255);
+  text("Map Data used under Fair Use License - ©2015 Google", wwidth-10, wlength -10 ); 
         
 }
 
@@ -147,6 +148,42 @@ void drawMark(float x, float y, int lmode, boolean lemphasis) {
   }
 
 //
+}
 
-
+void drawLegend() {
+  
+  int llmargin = lmargin+30;
+  int lrmargin = round((rmargin+lmargin)/4);
+  int ltmargin = bmargin+lmargin+50+20;
+  int lbmargin = ltmargin+58;
+  int cx = (lrmargin+llmargin)/2;
+  int lpad = 5;
+  
+  fill(255,255,255);
+  stroke(0);
+  beginShape();
+  vertex(llmargin,ltmargin);
+  vertex(lrmargin,ltmargin);
+  vertex(lrmargin,lbmargin);
+  vertex(llmargin,lbmargin);
+  endShape(CLOSE);
+  
+  fill(0);
+  textSize(bodyTextSize);
+  textAlign(CENTER,CENTER);
+  text("Legend - Accident Location", cx, ltmargin+lpad);
+  textAlign(LEFT,CENTER);
+  drawMark(llmargin+15, ltmargin+lpad+bodyTextSize+7, 0, true);
+  fill(0);
+  text("Fatal Accidents",llmargin+40, ltmargin+lpad+bodyTextSize+4);
+  drawMark(llmargin+15, ltmargin+lpad+(bodyTextSize)*2+10, 1, false);
+  fill(0);
+  text("Serious Accidents",llmargin+40, ltmargin+lpad+(bodyTextSize*2)+6);
+  drawMark(llmargin+15, ltmargin+lpad+(bodyTextSize)*3+10, 2, false);
+  fill(0);
+  text("Slight Accidents",llmargin+40, ltmargin+lpad+(bodyTextSize*3)+8);
+  
+  
+  println(llmargin + " " + cx + " " + lrmargin);
+  
 }
